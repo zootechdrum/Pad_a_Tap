@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Load the Paper.js library -->
+<script type="text/javascript" src="paper-full.js"></script>
+<!-- Define inlined PaperScript associate it with myCanvas -->
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/paperscript" canvas="myCanvas">
+
+	var rect = [];
+	// Gets a random point according to the screen size.
+	function onKeyDown(event) {
+		var maxPoint = new Point(view.size.width, view.size.height);
+		var randomPoint = Point.random();
+		var point = maxPoint * randomPoint;
+
+	
+		// Create a rectangle shaped path with its top left point at
+		rect.push(new Path.Rectangle({
+			point: [point.x, point.y],
+			size: [75, 75],
+			strokeColor: 'pink',
+			strokeWidth:7,
+
+			})
+		);
+	}
+	function onFrame(event) {
+		for(var i = 0; i < rect.length; i++){
+			rect[i].rotate(3)
+		}
+	}
+
+
+	
+
+
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
