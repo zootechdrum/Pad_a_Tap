@@ -8,18 +8,27 @@
 <script type="text/paperscript" canvas="myCanvas">
 
 	var rect = [];
+
+
+	function randomNumber(){
+		var randomNum = "0." + Math.floor(Math.random() * 9);
+		console.log(randomNum + "," + randomNum + "," + randomNum);
+		return randomNum;
+	}
+
 	// Gets a random point according to the screen size.
 	function onKeyDown(event) {
 		var maxPoint = new Point(view.size.width, view.size.height);
 		var randomPoint = Point.random();
 		var point = maxPoint * randomPoint;
+		var color = randomNumber()
 
 	
 		// Create a rectangle shaped path with its top left point at
 		rect.push(new Path.Rectangle({
 			point: [point.x, point.y],
 			size: [75, 75],
-			strokeColor: 'pink',
+			strokeColor: new Color(0.9,0,color),
 			strokeWidth:7,
 
 			})
@@ -27,7 +36,8 @@
 	}
 	function onFrame(event) {
 		for(var i = 0; i < rect.length; i++){
-			rect[i].rotate(3)
+			rect[i].rotate(3);
+			rect[i].scale(.9);
 		}
 	}
 
