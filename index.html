@@ -3,41 +3,227 @@
 <head>
 <!-- Load the Paper.js library -->
 <script type="text/javascript" src="paper-full.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.js"></script>
+<script type="text/javascript" src="node_modules/howler"></script>
 <!-- Define inlined PaperScript associate it with myCanvas -->
 <link rel="stylesheet" type="text/css" href="style.css">
 <script type="text/paperscript" canvas="myCanvas">
 
+
+	var keys = {
+		a: {
+			color:"red",
+			sounds: new Howl({
+				src: ['sounds/pinwheel.mp3'],
+				html5: true
+			})
+		},
+		q: {
+			color: 'pink',
+			sounds: new Howl({
+			  src: ['sounds/clay.mp3'],
+			  html5: true
+			})
+		},
+		s: {
+			color: 'fuchsia',
+			sounds: new Howl({
+			  src: ['sounds/piston-1.mp3'],
+			  html5: true
+			})
+		},
+		w: {
+			color: 'yellow',
+			sounds: new Howl({
+			  src: ['sounds/clay.mp3'],
+			  html5: true
+			})
+		},
+		e: {
+			color: 'crimson',
+			sounds: new Howl({
+			  src: ['sounds/confetti.mp3'],
+			  html5: true
+			})
+		},
+		r: {
+			color: 'blue',
+			sounds: new Howl({
+			  src: ['sounds/corona.mp3'],
+			  html5: true
+			})
+		},
+			t: {
+			color: 'lime',
+			sounds: new Howl({
+			  src: ['sounds/dotted-spiral.mp3'],
+			  html5: true
+			})
+		},
+		y: {
+			color: 'aquamarine',
+			sounds: new Howl({
+			  src: ['sounds/flash-1.mp3'],
+			  html5: true
+			})
+		},
+		u: {
+			color: 'azure',
+			sounds: new Howl({
+			  src: ['sounds/flash-2.mp3'],
+			  html5: true
+			})
+
+		},
+		i: {
+			color: 'lime',
+			sounds: new Howl({
+			  src: ['sounds/flash-3.mp3'],
+			  html5: true
+			})
+		},
+		o: {
+			color: 'orange',
+			sounds: new Howl({
+				src: ['sounds/glimmer.mp3'],
+				html5: true
+			})
+		},
+		p: {
+			color: "aqua",
+			sounds: new Howl({
+			  src: ['sounds/moon.mp3'],
+			  html5: true
+			})
+		},
+	
+		d: {
+			color:"blueviolet",
+			sounds: new Howl({
+			  src: ['sounds/piston-2.mp3'],
+			  html5: true
+			})
+		},
+		f: {
+			color:"cornflowerblue",
+			sounds: new Howl({
+			  src: ['sounds/prism-1.mp3'],
+			  html5: true
+			})
+		},
+		g: {
+			color:"deeppink",
+			sounds: new Howl({
+			  src: ['sounds/prism-2.mp3'],
+			  html5: true
+			})
+		},
+		h: {
+			color:"honeydew",
+			sounds: new Howl({
+			src: ['sounds/prism-3.mp3'],
+			html5:true
+			})
+		},
+		j: {
+			color:"indianred",
+			sound: new Howl({
+			  src: ['sounds/splits.mp3'],
+			  html5: true
+			})
+		},
+		k: {
+			color:"indigo",
+			sounds: new Howl({
+			  src: ['sounds/squiggle.mp3'],
+			  html5: true
+			})
+		},
+		l: {
+			color:"ghostwhite",
+			sounds: new Howl({
+			  src: ['sounds/strike.mp3'],
+			  html5: true
+			})
+		},
+		z: {
+			color:"greenyellow",
+			sounds: new Howl({
+			  src: ['sounds/suspension.mp3'],
+			  html5: true
+			})
+		},
+		x: {
+			color:"lawngreen",
+			sounds: new Howl({
+			  src: ['sounds/timer.mp3'],
+			  html5:true
+			})
+		},
+		c: {
+			color:"lightcoral",
+			sounds: new Howl({
+			  src: ['sounds/ufo.mp3'],
+			  html5:true
+			})
+		},
+		v: {
+			color:"magenta",
+			sounds: new Howl({
+			  src: ['sounds/veil.mp3'],
+			  html5:true
+			})
+		},
+		b: {
+			color:"mediumspringgreen",
+			sounds: new Howl({
+			  src: ['sounds/wipe.mp3'],
+			  html5:true
+			})
+		},
+		n: {
+			color:"mintcream",
+			sounds: new Howl({
+				src: ['sounds/zig-zag.mp3'],
+				html5:true
+			})
+		},
+		m: {
+			color:"orangered",
+			sounds: new Howl({
+			  src: ['sounds/moon.mp3'],
+			  html5:true
+			})
+		}
+
+	}	
+
 	var rect = [];
-
-
-	function randomNumber(){
-		var randomNum = "0." + Math.floor(Math.random() * 9);
-		console.log(randomNum + "," + randomNum + "," + randomNum);
-		return randomNum;
-	}
 
 	// Gets a random point according to the screen size.
 	function onKeyDown(event) {
+		var id  = keys[event.key].sounds.play();
+		keys[event.key].sounds.rate(1.6)
 		var maxPoint = new Point(view.size.width, view.size.height);
 		var randomPoint = Point.random();
 		var point = maxPoint * randomPoint;
-		var color = randomNumber()
 
 	
 		// Create a rectangle shaped path with its top left point at
-		rect.push(new Path.Rectangle({
+		var newRect = new Path.Rectangle({
 			point: [point.x, point.y],
-			size: [75, 75],
-			strokeColor: new Color(0.9,0,color),
+			size: [500, 500],
 			strokeWidth:7,
-
-			})
-		);
+			strokeColor:keys[event.key].color
+		})
+			rect.push(newRect)		    
 	}
 	function onFrame(event) {
 		for(var i = 0; i < rect.length; i++){
 			rect[i].rotate(3);
 			rect[i].scale(.9);
+			rect[i].strokeColor.hue += 6;
+			rect[i].position.y += -12
 		}
 	}
 
