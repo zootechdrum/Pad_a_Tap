@@ -127,7 +127,7 @@
 		},
 		j: {
 			color:"indianred",
-			sound: new Howl({
+			sounds: new Howl({
 			  src: ['sounds/splits.mp3'],
 			  html5: true
 			})
@@ -207,11 +207,12 @@
 		var maxPoint = new Point(view.size.width, view.size.height);
 		var randomPoint = Point.random();
 		var point = maxPoint * randomPoint;
+		console.log(point)
 
 	
 		// Create a rectangle shaped path with its top left point at
 		var newRect = new Path.Rectangle({
-			point: [point.x, point.y],
+			point: [point.x * 0.8, 400],
 			size: [500, 500],
 			strokeWidth:7,
 			strokeColor:keys[event.key].color
@@ -223,7 +224,7 @@
 			rect[i].rotate(3);
 			rect[i].scale(.9);
 			rect[i].strokeColor.hue += 6;
-			rect[i].position.y += -12
+			rect[i].position.y += -6
 		}
 	}
 
