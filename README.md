@@ -3,6 +3,10 @@ This project is inspired by Colt Steele's course on Udemy.com
 
 ![](images/drum.gif)
 
+# Description
+
+As simple as this project is. It is still on of my favorites. I love the color changes and the musical effects on key press. Its simple but lots of fun to play with. 
+
 ## Technologies Used
 
 1. HTML5
