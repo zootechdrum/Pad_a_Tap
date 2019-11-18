@@ -5,7 +5,7 @@ This project is inspired by Colt Steele's course on Udemy.com
 
 # Description
 
-As simple as this project is. It is still on of my favorites. I love the color changes and the musical effects on key press. Its simple but lots of fun to play with. 
+Upon keydown event the DOM will populate with squares and will also make a musical sound. As simple as this project is it is still on of my favorites. This was inspires byt Colt Steele's course on udemy from the complete web developer bootcamp. 
 
 ## Technologies Used
 
