@@ -11,7 +11,7 @@ This project is inspired by Colt Steele's course on Udemy.com
 4. Javascript 
 
 
-##Snippet of Code
+## Snippet of Code
 The below code will rotate and and adjust the color of the square on the Canvas.
 
 
